@@ -501,6 +501,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Function to sanitize difficulty values to prevent XSS
+  function sanitizeDifficulty(difficulty) {
+    const validDifficulties = ['Beginner', 'Intermediate', 'Advanced'];
+    return validDifficulties.includes(difficulty) ? difficulty : '';
+  }
+
   // Function to render a single activity card
   function renderActivityCard(name, details) {
     const activityCard = document.createElement("div");
@@ -537,8 +543,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Create difficulty badge if specified
     const difficultyBadge = details.difficulty ? `
-      <span class="difficulty-badge difficulty-${details.difficulty.toLowerCase()}">
-        ${details.difficulty}
+      <span class="difficulty-badge difficulty-${sanitizeDifficulty(details.difficulty).toLowerCase()}">
+        ${sanitizeDifficulty(details.difficulty)}
       </span>
     ` : '';
 
