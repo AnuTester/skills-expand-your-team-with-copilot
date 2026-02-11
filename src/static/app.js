@@ -363,6 +363,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return "academic";
   }
 
+  // Helper function to escape HTML entities
+  function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.textContent = text;
+    return div.innerHTML;
+  }
+
   // Handle social sharing
   function handleShare(event) {
     const button = event.currentTarget;
@@ -607,16 +614,16 @@ document.addEventListener("DOMContentLoaded", () => {
       </div>
       <div class="share-buttons">
         <span class="share-label">Share:</span>
-        <button class="share-button facebook" data-activity="${name}" data-description="${details.description}" data-schedule="${formattedSchedule}" title="Share on Facebook">
+        <button class="share-button facebook" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-schedule="${escapeHtml(formattedSchedule)}" title="Share on Facebook">
           <span class="share-icon">📘</span>
         </button>
-        <button class="share-button twitter" data-activity="${name}" data-description="${details.description}" data-schedule="${formattedSchedule}" title="Share on Twitter">
+        <button class="share-button twitter" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-schedule="${escapeHtml(formattedSchedule)}" title="Share on Twitter">
           <span class="share-icon">🐦</span>
         </button>
-        <button class="share-button linkedin" data-activity="${name}" data-description="${details.description}" data-schedule="${formattedSchedule}" title="Share on LinkedIn">
+        <button class="share-button linkedin" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-schedule="${escapeHtml(formattedSchedule)}" title="Share on LinkedIn">
           <span class="share-icon">💼</span>
         </button>
-        <button class="share-button email" data-activity="${name}" data-description="${details.description}" data-schedule="${formattedSchedule}" title="Share via Email">
+        <button class="share-button email" data-activity="${escapeHtml(name)}" data-description="${escapeHtml(details.description)}" data-schedule="${escapeHtml(formattedSchedule)}" title="Share via Email">
           <span class="share-icon">✉️</span>
         </button>
       </div>
