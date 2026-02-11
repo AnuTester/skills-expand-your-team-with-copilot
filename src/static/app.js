@@ -28,15 +28,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Update dark mode icon
   function updateDarkModeIcon() {
-    if (document.body.classList.contains("dark-mode")) {
-      darkModeIcon.textContent = "☀️";
-    } else {
-      darkModeIcon.textContent = "🌙";
+    if (darkModeIcon) {
+      if (document.body.classList.contains("dark-mode")) {
+        darkModeIcon.textContent = "☀️";
+      } else {
+        darkModeIcon.textContent = "🌙";
+      }
     }
   }
 
   // Event listener for dark mode toggle
-  darkModeToggle.addEventListener("click", toggleDarkMode);
+  if (darkModeToggle) {
+    darkModeToggle.addEventListener("click", toggleDarkMode);
+  }
 
   // Initialize dark mode from saved preference
   checkDarkModePreference();
